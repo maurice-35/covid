@@ -6,27 +6,31 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () => {
-  const [current, setCurrent] = useState([])
+  const [current, setCurrent] = useState([]);
+  const [results, setResults] = useState([])
 
-
+  
   useEffect(() => {
     axios
-      .get("https://covid2019-api.herokuapp.com/v2/current")
+    .all([
+      axios.get("https://covid2019-api.herokuapp.com/v2/total"),
+      axios.get("https://covid2019-api.herokuapp.com/v2/current")
+    ])
       .then(res => {
-        setCurrent(res.data.data[0]);
-        console.log(res.data.data[0])
-        setCurrent(res.data.dt)
-        console.log(res.data.ts)
+        //  setting total results
+        setCurrent(res[0].data.data);
+        // setting results for all countries
+        setResults(res[1].data.data);
       })
       .catch(err => {
         console.log(err);
       });
   }, []);
+  if (!results) return 'no data';
+    if (!Array.isArray(results)) return 'results are not array'
 
 
-
-const location = useState([])
-  const newLocation = location.map(locate => {
+  const locations = results.map((data) => {
     return (
       <Card
         bg="secondary"
@@ -35,13 +39,12 @@ const location = useState([])
         style={{ margin: "5px" }}
       >
         <Card.Body>
-          <Card.Title>{current.locate}</Card.Title>
-          <Card.Text>{current.confirmed}</Card.Text>
+          <Card.Title>{data.location}</Card.Title>
+          <Card.Text>Cases {data.cases}</Card.Text>
         </Card.Body>
       </Card>
     );
-  });
-  console.log("NewLocation:", newLocation)
+    });
 
   return (
     <div>
@@ -55,7 +58,7 @@ const location = useState([])
             <Card.Text>{current.confirmed}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small>Last updated {current.dt}</small>
+            <small>Last updated {new Date(current.data).toDateString()}</small>
           </Card.Footer>
         </Card>
         <Card bg="success" text="white" className="text-center" style={{ margin: "5px" }}>
@@ -95,7 +98,7 @@ const location = useState([])
           </Card.Footer>
         </Card>
       </CardGroup>
-      {location}
+      {locations}
     </div>
   );
 }
