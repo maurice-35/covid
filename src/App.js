@@ -14,7 +14,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .all([
+      .all([  
         axios.get("https://covid2019-api.herokuapp.com/v2/total"),
         axios.get("https://covid2019-api.herokuapp.com/v2/current"),
       ])
@@ -23,13 +23,17 @@ const App = () => {
         setCurrent(res[0].data.data);
         // setting results for all countries
         setResults(res[1].data.data, File);
-        console.log(res[1].data.data, File);
+        console.log(res[0].data.data)
+        console.log(res[1].data.data);
       })
       .catch(err => {
         console.log(err);
       });
   }, []);
 
+  console.log(File)
+
+  let count = 0
 
   if (!results) return 'no data';
   if (!Array.isArray(results)) return 'results are not array'
@@ -37,23 +41,20 @@ const App = () => {
   if (!Array.isArray(File)) return 'results are not array'
 
 
-  const locations = results.map((data, i) => {
-     // let country = [];
-  if('data' == 'File') {
-    let country = 'location'
-    return country
-  }
+  const locations = results.map((data) => {
+  
 
     return (
       <Card
-        key={i}
+        key={data.id}
         bg="secondary"
         text="white"
         className="text-center"
         style={{ margin: "5px" }}
       >
-        <Card.Img variant="top" 
-        src={data.flagUrl} />
+        {console.log(File[count].location, File[count].flagUrl)}
+        <img src={File[count].flagUrl} alt="flag" />
+        {count = count += 1}
         <Card.Body>
           <Card.Title>{data.location}</Card.Title>
           <Card.Text>Cases {data.cases}</Card.Text>
@@ -116,7 +117,7 @@ const App = () => {
           </Card.Footer>
         </Card>
       </CardGroup>
-      {locations}
+      <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridGap: 10 }}>{locations}</CardGroup>
     </div>
   );
 }
