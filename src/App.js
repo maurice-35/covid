@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Card, CardGroup } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { File } from './Doc/File';
+import { File }  from './Doc/File'
 
 
 const App = () => {
@@ -52,9 +52,9 @@ const App = () => {
         className="text-center"
         style={{ margin: "5px" }}
       >
-        {console.log(File[count].location, File[count].flagUrl)}
+        {console.log(File[count].country, File[count].flagUrl)}
         <img src={File[count].flagUrl} alt="flag" />
-        {count = count += 1}
+        {count = count +=1}
         <Card.Body>
           <Card.Title>{data.location}</Card.Title>
           <Card.Text>Cases {data.cases}</Card.Text>
@@ -117,7 +117,7 @@ const App = () => {
           </Card.Footer>
         </Card>
       </CardGroup>
-      <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridGap: 10 }}>{locations}</CardGroup>
+      <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gridGap: 10 }}>{locations}</CardGroup>
     </div>
   );
 }
