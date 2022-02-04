@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Card, CardGroup } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { Card, CardGroup, Form } from 'react-bootstrap'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { File }  from './Doc/File'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { File } from './Doc/File'
 
 
 const App = () => {
-  const [current, setCurrent] = useState([]);
-  const [results, setResults] = useState([]);
+  const [current, setCurrent] = useState([])
+  const [results, setResults] = useState([])
+  const [searchLocation, setSearchLocation] = useState("")
 
 
 
   useEffect(() => {
     axios
-      .all([  
+      .all([
         axios.get("https://covid2019-api.herokuapp.com/v2/total"),
         axios.get("https://covid2019-api.herokuapp.com/v2/current"),
       ])
@@ -22,16 +23,16 @@ const App = () => {
         //  setting total results
         setCurrent(res[0].data.data);
         // setting results for all countries
-        setResults(res[1].data.data, File);
-        console.log(res[0].data.data)
-        console.log(res[1].data.data);
+        setResults(res[1].data.data, File[count]);
+        // console.log(res[0].data.data)
+        // console.log(res[1].data.data);
       })
       .catch(err => {
         console.log(err);
-      });
-  }, []);
+      })
+  }, [])
 
-  console.log(File)
+  // console.log(File)
 
   let count = 0
 
@@ -41,8 +42,11 @@ const App = () => {
   if (!Array.isArray(File)) return 'results are not array'
 
 
-  const locations = results.map((data) => {
-  
+  const filterLocation = results.filter(item => {
+    return item.location === searchLocation
+  })
+
+  const locations = filterLocation.map((data) => {
 
     return (
       <Card
@@ -54,7 +58,7 @@ const App = () => {
       >
         {console.log(File[count].country, File[count].flagUrl)}
         <img src={File[count].flagUrl} alt="flag" />
-        {count = count +=1}
+        {count = count += 1}
         <Card.Body>
           <Card.Title>{data.location}</Card.Title>
           <Card.Text>Cases {data.cases}</Card.Text>
@@ -64,8 +68,8 @@ const App = () => {
           <Card.Text>Active {data.active}</Card.Text>
         </Card.Body>
       </Card>
-    );
-  });
+    )
+  })
 
 
   return (
@@ -117,9 +121,18 @@ const App = () => {
           </Card.Footer>
         </Card>
       </CardGroup>
+      <Form>
+        <Form.Group controlId="formGroupSearch">
+          <Form.Control
+            type="text" 
+            placeholder="Search a country"
+            onChange={e => setSearchLocation(e.target.value)}
+          />
+        </Form.Group>
+      </Form>
       <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gridGap: 10 }}>{locations}</CardGroup>
     </div>
-  );
+  )
 }
 
 export default App
