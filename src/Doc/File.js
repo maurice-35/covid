@@ -210,12 +210,16 @@ export const File = ([
 		flagUrl: 'https://img.geonames.org/flags/x/bg.gif',
 	},
 	{
-		country: 'Nepal',
-		flagUrl: 'https://img.geonames.org/flags/x/np.gif',
-	},
-	{
 		country: 'Croatia',
 		flagUrl: 'https://img.geonames.org/flags/x/hr.gif',
+	},
+	{
+		country: 'South Korea',
+		flagUrl: 'https://img.geonames.org/flags/x/kr.gif',
+	},
+	{
+		country: 'Nepal',
+		flagUrl: 'https://img.geonames.org/flags/x/np.gif',
 	},
 	{
 		country: 'Lebanon',
@@ -226,8 +230,8 @@ export const File = ([
 		flagUrl: 'https://img.geonames.org/flags/x/tn.gif',
 	},
 	{
-		country: 'South Korea',
-		flagUrl: 'https://img.geonames.org/flags/x/kr.gif',
+		country: 'Norway',
+		flagUrl: 'https://img.geonames.org/flags/x/no.gif',
 	},
 	{
 		country: 'Bolivia',
@@ -238,20 +242,20 @@ export const File = ([
 		flagUrl: 'https://img.geonames.org/flags/x/ae.gif',
 	},
 	{
-		country: 'Norway',
-		flagUrl: 'https://img.geonames.org/flags/x/no.gif',
+		country: 'Slovenia',
+		flagUrl: 'https://img.geonames.org/flags/x/si.gif',
 	},
 	{
 		country: 'Belarus',
 		flagUrl: 'https://img.geonames.org/flags/x/by.gif',
 	},
 	{
-		country: 'Slovenia',
-		flagUrl: 'https://img.geonames.org/flags/x/si.gif',
-	},
-	{
 		country: 'Ecuador',
 		flagUrl: 'https://img.geonames.org/flags/x/ec.gif',
+	},
+	{
+		country: 'Lithuania',
+		flagUrl: 'https://img.geonames.org/flags/x/lt.gif',
 	},
 	{
 		country: 'Costa Rica',
@@ -262,48 +266,48 @@ export const File = ([
 		flagUrl: 'https://img.geonames.org/flags/x/pa.gif',
 	},
 	{
-		country: 'Aruba',
-		flagUrl: 'https://img.geonames.org/flags/x/aw.gif',
+		country: 'Uruguay',
+		flagUrl: 'https://img.geonames.org/flags/x/uy.gif',
 	},
 	{
-		country: 'Åland',
-		flagUrl: 'https://img.geonames.org/flags/x/ax.gif',
+		country: 'Guatemala',
+		flagUrl: 'https://img.geonames.org/flags/x/gt.gif',
+	},
+	{
+		country: 'Saudi Arabia',
+		flagUrl: 'https://img.geonames.org/flags/x/sa.gif',
 	},
 	{
 		country: 'Azerbaijan',
 		flagUrl: 'https://img.geonames.org/flags/x/az.gif',
 	},
 	{
-		country: 'United Arab Emirates',
-		flagUrl: 'https://img.geonames.org/flags/x/ae.gif',
+		country: 'Sri Lanka',
+		flagUrl: 'https://img.geonames.org/flags/x/lk.gif',
 	},
 	{
-		country: 'United Arab Emirates',
-		flagUrl: 'https://img.geonames.org/flags/x/ae.gif',
+		country: 'Paraguay',
+		flagUrl: 'https://img.geonames.org/flags/x/py.gif',
 	},
 	{
-		country: 'United Arab Emirates',
-		flagUrl: 'https://img.geonames.org/flags/x/ae.gif',
+		country: 'Kuwait',
+		flagUrl: 'https://img.geonames.org/flags/x/kw.gif',
 	},
 	{
-		country: 'United Arab Emirates',
-		flagUrl: 'https://img.geonames.org/flags/x/ae.gif',
+		country: 'Dominican Republic',
+		flagUrl: 'https://img.geonames.org/flags/x/do.gif',
 	},
 	{
-		country: 'United Arab Emirates',
-		flagUrl: 'https://img.geonames.org/flags/x/ae.gif',
+		country: 'West Bank and Gaza',
+		flagUrl: 'https://img.geonames.org/flags/x/il.gif',
 	},
 	{
-		country: 'United Arab Emirates',
-		flagUrl: 'https://img.geonames.org/flags/x/ae.gif',
+		country: 'Burma',
+		flagUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Guyana_location_map.svg/407px-Guyana_location_map.svg.png',
 	},
 	{
-		country: 'United Arab Emirates',
-		flagUrl: 'https://img.geonames.org/flags/x/ae.gif',
-	},
-	{
-		country: 'United Arab Emirates',
-		flagUrl: 'https://img.geonames.org/flags/x/ae.gif',
+		country: 'Finland',
+		flagUrl: 'https://img.geonames.org/flags/x/fi.gif',
 	},
 	{
 		country: 'United Arab Emirates',

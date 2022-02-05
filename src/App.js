@@ -25,7 +25,7 @@ const App = () => {
         // setting results for all countries
         setResults(res[1].data.data, File[count]);
         // console.log(res[0].data.data)
-        // console.log(res[1].data.data);
+        console.log(res[1].data.data);
       })
       .catch(err => {
         console.log(err);
@@ -42,11 +42,11 @@ const App = () => {
   if (!Array.isArray(File)) return 'results are not array'
 
 
-  const filterLocation = results.filter(item => {
-    return item.location === searchLocation
-  })
+  // const filterLocation = results.filter(item => {
+  //   return item.location === searchLocation
+  // })
 
-  const locations = filterLocation.map((data) => {
+  const locations = results.map((data) => {
 
     return (
       <Card
