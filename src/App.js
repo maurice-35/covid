@@ -9,7 +9,10 @@ import { File } from './Doc/File'
 const App = () => {
   const [current, setCurrent] = useState([])
   const [results, setResults] = useState([])
-  const [searchLocation, setSearchLocation] = useState("")
+  const [searchLocation, setSearchLocation] = useState({
+    location: '',
+    flagUrl: '',
+  })
 
 
 
@@ -42,11 +45,11 @@ const App = () => {
   if (!Array.isArray(File)) return 'results are not array'
 
 
-  // const filterLocation = results.filter(item => {
-  //   return item.location === searchLocation
-  // })
+  const filterLocation = results.filter(item => {
+    return item.location === searchLocation
+  })
 
-  const locations = results.map((data) => {
+  const locations = filterLocation.map((data) => {
 
     return (
       <Card
@@ -56,7 +59,7 @@ const App = () => {
         className="text-center"
         style={{ margin: "5px" }}
       >
-        {console.log(File[count].country, File[count].flagUrl)}
+        {console.log(File[count].country, File[count].flagUrl[count])}
         <img src={File[count].flagUrl} alt="flag" />
         {count = count += 1}
         <Card.Body>
@@ -126,7 +129,7 @@ const App = () => {
           <Form.Control
             type="text" 
             placeholder="Search a country"
-            onChange={e => setSearchLocation(e.target.value)}
+            onChange={e => setSearchLocation(e.target.value)} 
           />
         </Form.Group>
       </Form>

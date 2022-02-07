@@ -1,10 +1,6 @@
 
 
 export const File = ([
-	// {
-	// 	country: 'US',
-	// 	flagURL: 'http://www.geonames.org/flags/l/us.gif',
-	// },
 	{
 		country: 'US',
 		flagUrl: 'https://img.geonames.org/flags/x/us.gif',
@@ -430,48 +426,48 @@ export const File = ([
 		flagUrl: 'https://img.geonames.org/flags/x/lu.gif',
 	},
 	{
-		country: 'Afghanistan',
-		flagUrl: 'https://img.geonames.org/flags/x/af.gif',
+		country: 'Uganda',
+		flagUrl: 'https://img.geonames.org/flags/x/ug.gif',
 	},
 	{
-		country: 'Albania',
-		flagUrl: 'https://img.geonames.org/flags/x/al.gif',
+		country: 'Ghana',
+		flagUrl: 'https://img.geonames.org/flags/x/gh.gif',
 	},
 	{
-		country: 'Armenia',
-		flagUrl: 'https://img.geonames.org/flags/x/am.gif',
+		country: 'Namibia',
+		flagUrl: 'https://img.geonames.org/flags/x/na.gif',
 	},
 	{
-		country: 'Angola',
-		flagUrl: 'https://img.geonames.org/flags/x/ao.gif',
+		country: 'Maldives',
+		flagUrl: 'https://img.geonames.org/flags/x/mv.gif',
 	},
 	{
-		country: 'Antarctica',
-		flagUrl: 'https://img.geonames.org/flags/x/aq.gif',
+		country: 'Loas',
+		flagUrl: 'https://img.geonames.org/flags/x/la.gif',
 	},
 	{
-		country: 'Argentina',
-		flagUrl: 'https://img.geonames.org/flags/x/ar.gif',
+		country: 'El Salvador',
+		flagUrl: 'https://img.geonames.org/flags/x/sv.gif',
 	},
 	{
-		country: 'American Samoa',
-		flagUrl: 'https://img.geonames.org/flags/x/as.gif',
+		country: 'Rwanda',
+		flagUrl: 'https://img.geonames.org/flags/x/rw.gif',
 	},
 	{
-		country: 'Austria',
-		flagUrl: 'https://img.geonames.org/flags/x/at.gif',
+		country: 'Jamaica',
+		flagUrl: 'https://img.geonames.org/flags/x/jm.gif',
 	},
 	{
-		country: 'Australia',
-		flagUrl: 'https://img.geonames.org/flags/x/au.gif',
+		country: 'Cambodia',
+		flagUrl: 'https://img.geonames.org/flags/x/kh.gif',
 	},
 	{
-		country: 'Aruba',
-		flagUrl: 'https://img.geonames.org/flags/x/aw.gif',
+		country: 'China',
+		flagUrl: 'https://img.geonames.org/flags/x/cn.gif',
 	},
 	{
-		country: 'Åland',
-		flagUrl: 'https://img.geonames.org/flags/x/ax.gif',
+		country: 'Cameroon',
+		flagUrl: 'https://img.geonames.org/flags/x/cm.gif',
 	},
 	{
 		country: 'Azerbaijan',
