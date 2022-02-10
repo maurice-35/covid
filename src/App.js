@@ -9,10 +9,7 @@ import { File } from './Doc/File'
 const App = () => {
   const [current, setCurrent] = useState([])
   const [results, setResults] = useState([])
-  const [searchLocation, setSearchLocation] = useState({
-    location: '',
-    flagUrl: '',
-  })
+  const [searchLocation, setSearchLocation] = useState()
 
 
 
@@ -26,8 +23,8 @@ const App = () => {
         //  setting total results
         setCurrent(res[0].data.data);
         // setting results for all countries
-        setResults(res[1].data.data, File[count]);
-        // console.log(res[0].data.data)
+        setResults(res[1].data.data, File);
+        console.log(res[0].data.data)
         console.log(res[1].data.data);
       })
       .catch(err => {
@@ -35,7 +32,6 @@ const App = () => {
       })
   }, [])
 
-  // console.log(File)
 
   let count = 0
 
@@ -46,10 +42,15 @@ const App = () => {
 
 
   const filterLocation = results.filter(item => {
+    if(item === [results.location && results.flagUrl]) {
     return item.location === searchLocation
+    } else {
+      return 'No data'
+    }
   })
 
   const locations = filterLocation.map((data) => {
+
 
     return (
       <Card
@@ -59,10 +60,10 @@ const App = () => {
         className="text-center"
         style={{ margin: "5px" }}
       >
-        {console.log(File[count].country, File[count].flagUrl[count])}
+        {console.log(File[count].country, File[count].flagUrl)}
         <img src={File[count].flagUrl} alt="flag" />
         {count = count += 1}
-        <Card.Body>
+        <Card.Body >
           <Card.Title>{data.location}</Card.Title>
           <Card.Text>Cases {data.cases}</Card.Text>
           <Card.Text>Confirmed {data.confirmed}</Card.Text>
@@ -74,10 +75,9 @@ const App = () => {
     )
   })
 
-
   return (
     <div>
-      <CardGroup>
+      <CardGroup id="background">
         <Card bg="secondary" text="white" className="text-center" style={{ margin: "5px" }}>
           <Card.Body>
             <Card.Title>

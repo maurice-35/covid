@@ -1,6 +1,10 @@
 
 
 export const File = ([
+	// {
+	// 	country: 'US',
+	// 	flagUrl: 'https://img.geonames.org/flags/x/us.gif',
+	// },
 	{
 		country: 'US',
 		flagUrl: 'https://img.geonames.org/flags/x/us.gif',
@@ -422,6 +426,10 @@ export const File = ([
 		flagUrl: 'https://img.geonames.org/flags/x/kg.gif',
 	},
 	{
+		country: 'Afghanistan',
+		flagUrl: 'https://img.geonames.org/flags/x/af.gif',
+	},
+	{
 		country: 'Luxembourg',
 		flagUrl: 'https://img.geonames.org/flags/x/lu.gif',
 	},
@@ -458,24 +466,20 @@ export const File = ([
 		flagUrl: 'https://img.geonames.org/flags/x/jm.gif',
 	},
 	{
-		country: 'Cambodia',
-		flagUrl: 'https://img.geonames.org/flags/x/kh.gif',
-	},
-	{
 		country: 'China',
 		flagUrl: 'https://img.geonames.org/flags/x/cn.gif',
+	},
+	{
+		country: 'Cambodia',
+		flagUrl: 'https://img.geonames.org/flags/x/kh.gif',
 	},
 	{
 		country: 'Cameroon',
 		flagUrl: 'https://img.geonames.org/flags/x/cm.gif',
 	},
 	{
-		country: 'Azerbaijan',
-		flagUrl: 'https://img.geonames.org/flags/x/az.gif',
-	},
-	{
-		country: 'United Arab Emirates',
-		flagUrl: 'https://img.geonames.org/flags/x/ae.gif',
+		country: 'Trinidad and Tobago',
+		flagUrl: 'https://img.geonames.org/flags/x/tt.gif',
 	},
 	{
 		country: 'United Arab Emirates',
