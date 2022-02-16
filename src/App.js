@@ -32,7 +32,7 @@ const App = () => {
       })
   }, [])
 
-
+  console.log('File', File)
   let count = 0
 
   if (!results) return 'no data';
@@ -48,6 +48,8 @@ const App = () => {
       return 'No data'
     }
   })
+  console.log('Search', searchLocation)
+
 
   const locations = filterLocation.map((data) => {
 
@@ -60,10 +62,10 @@ const App = () => {
         className="text-center"
         style={{ margin: "5px" }}
       >
-        {console.log(File[count].country, File[count].flagUrl)}
+        {/* {(File[count], File[count].flagUrl)} */}
         <img src={File[count].flagUrl} alt="flag" />
         {count = count += 1}
-        <Card.Body >
+        <Card.Body>
           <Card.Title>{data.location}</Card.Title>
           <Card.Text>Cases {data.cases}</Card.Text>
           <Card.Text>Confirmed {data.confirmed}</Card.Text>
