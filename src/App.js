@@ -62,10 +62,12 @@ const App = () => {
         className="text-center"
         style={{ margin: "5px" }}
       >
-        {/* {(File[count], File[count].flagUrl)} */}
+        {File[count].country}
         <img src={File[count].flagUrl} alt="flag" />
         {count = count += 1}
-        <Card.Body>
+        <Card.Body
+        key={data.id}
+        >
           <Card.Title>{data.location}</Card.Title>
           <Card.Text>Cases {data.cases}</Card.Text>
           <Card.Text>Confirmed {data.confirmed}</Card.Text>

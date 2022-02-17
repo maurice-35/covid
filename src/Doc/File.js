@@ -756,11 +756,11 @@ export const File = ([
 	},
 	{
 		country: 'Diamond Princess',
-		flagUrl: 'https://img.geonames.org/flags/x/dd.gif',
+		flagUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Civil_Ensign_of_the_United_Kingdom.svg/56px-Civil_Ensign_of_the_United_Kingdom.svg.png',
 	},
 	{
 		country: 'Winter Olympics 2022',
-		flagUrl: 'https://img.geonames.org/flags/x/wo.gif',
+		flagUrl: 'https://skiliftblog.files.wordpress.com/2015/07/gentling-trail-map.jpg?w=442&h=286',
 	},
 	{
 		country: 'Tonga',
@@ -772,7 +772,7 @@ export const File = ([
 	},
 	{
 		country: 'Holy See',
-		flagUrl: 'https://img.geonames.org/flags/x/ho.gif',
+		flagUrl: 'https://www.worldatlas.com/r/w960-q80/upload/08/4c/d4/shutterstock-439742272.jpg',
 	},
 	{
 		country: 'Antarctica',
