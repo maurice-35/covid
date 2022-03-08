@@ -8,8 +8,8 @@ import { File } from './Doc/File'
 
 const App = () => {
   const [current, setCurrent] = useState([])
-  const [results, setResults] = useState([])
-  const [searchLocation, setSearchLocation] = useState()
+  const [results, setResults] = useState([current])
+  const [searchLocation, setSearchLocation] = useState([results])
 
 
 
@@ -21,10 +21,10 @@ const App = () => {
       ])
       .then(res => {
         //  setting total results
-        setCurrent(res[0].data.data);
+        setCurrent([res[0].data.data, res[0].data.dt]);
         // setting results for all countries
         setResults(res[1].data.data, File);
-        console.log(res[0].data.data)
+        console.log([res[0].data.data, res[0].data.dt]);
         console.log(res[1].data.data);
       })
       .catch(err => {
@@ -41,17 +41,17 @@ const App = () => {
   if (!Array.isArray(File)) return 'results are not array'
 
 
-  const filterLocation = results.filter(item => {
-    if(item === [results.location && results.flagUrl]) {
-    return item.location === searchLocation
-    } else {
-      return 'No data'
-    }
-  })
-  console.log('Search', searchLocation)
+  // const filterLocation = results.filter(item => {
+  //   if(item === [results.location && results.flagUrl]) {
+  //   return item.location === searchLocation
+  //   } else {
+  //     return 'No data'
+  //   }
+  // })
+  // console.log('Search', searchLocation)
 
 
-  const locations = filterLocation.map((data) => {
+  const locations = results.map((data, id) => {
 
 
     return (
@@ -79,6 +79,10 @@ const App = () => {
     )
   })
 
+  const dt = new Date();
+  let text = dt.toString();
+  console.log(text)
+
   return (
     <div>
       <CardGroup id="background">
@@ -91,7 +95,8 @@ const App = () => {
             <Card.Text>{current.confirmed}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small>Last updated {new Date(current.data).toDateString()}</small>
+            <small>Last updated {text}</small>
+            {/* <small>Last updated {new Date(current[1].dt).toDateString()}</small> */}
           </Card.Footer>
         </Card>
         <Card bg="danger" text="white" className="text-center" style={{ margin: "5px" }}>
@@ -102,7 +107,7 @@ const App = () => {
             <Card.Text>{current.deaths}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small>Last updated 3 mins ago</small>
+            <small>Last updated {text}</small>
           </Card.Footer>
         </Card>
         <Card bg="success" text="white" className="text-center" style={{ margin: "5px" }}>
@@ -113,7 +118,7 @@ const App = () => {
             <Card.Text>{current.recovered}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small>Last updated 3 mins ago</small>
+            <small>Last updated {text}</small>
           </Card.Footer>
         </Card>
         <Card bg="primary" text="white" className="text-center" style={{ margin: "5px" }}>
@@ -124,7 +129,7 @@ const App = () => {
             <Card.Text>{current.active}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small>Last updated 3 mins ago</small>
+            <small>Last updated {text}</small>
           </Card.Footer>
         </Card>
       </CardGroup>
@@ -137,7 +142,7 @@ const App = () => {
           />
         </Form.Group>
       </Form>
-      <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gridGap: 10 }}>{locations}</CardGroup>
+      <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: 10 }}>{locations}</CardGroup>
     </div>
   )
 }
