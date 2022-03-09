@@ -9,6 +9,7 @@ import { File } from './Doc/File'
 const App = () => {
   const [current, setCurrent] = useState([])
   const [results, setResults] = useState([current])
+  const [date, setDate] = useState([])
   const [searchLocation, setSearchLocation] = useState([results])
 
 
@@ -21,11 +22,14 @@ const App = () => {
       ])
       .then(res => {
         //  setting total results
-        setCurrent([res[0].data.data, res[0].data.dt]);
+        setCurrent(res[0].data.data);
         // setting results for all countries
         setResults(res[1].data.data, File);
-        console.log([res[0].data.data, res[0].data.dt]);
+        console.log(res[0].data.data);
         console.log(res[1].data.data);
+        let date = res[0].data.dt
+        console.log(date);
+        setDate(res[0].data.dt);
       })
       .catch(err => {
         console.log(err);
@@ -41,17 +45,17 @@ const App = () => {
   if (!Array.isArray(File)) return 'results are not array'
 
 
-  // const filterLocation = results.filter(item => {
-  //   if(item === [results.location && results.flagUrl]) {
-  //   return item.location === searchLocation
-  //   } else {
-  //     return 'No data'
-  //   }
-  // })
-  // console.log('Search', searchLocation)
+  const filterLocation = results.filter(item => {
+    if(item === [results.location && results.flagUrl]) {
+    return item.location === searchLocation
+    } else {
+      return 'No data'
+    }
+  })
+  console.log('Search', searchLocation)
 
 
-  const locations = results.map((data, id) => {
+  const locations = filterLocation.map((data, id) => {
 
 
     return (
@@ -68,7 +72,7 @@ const App = () => {
         <Card.Body
         key={data.id}
         >
-          <Card.Title>{data.location}</Card.Title>
+          <Card.Title> {data.location}</Card.Title>
           <Card.Text>Cases {data.cases}</Card.Text>
           <Card.Text>Confirmed {data.confirmed}</Card.Text>
           <Card.Text>Deaths {data.deaths}</Card.Text>
@@ -79,9 +83,6 @@ const App = () => {
     )
   })
 
-  const dt = new Date();
-  let text = dt.toString();
-  console.log(text)
 
   return (
     <div>
@@ -95,8 +96,7 @@ const App = () => {
             <Card.Text>{current.confirmed}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small>Last updated {text}</small>
-            {/* <small>Last updated {new Date(current[1].dt).toDateString()}</small> */}
+            <small>Last updated {new Date(date).toDateString()}</small>
           </Card.Footer>
         </Card>
         <Card bg="danger" text="white" className="text-center" style={{ margin: "5px" }}>
@@ -107,7 +107,7 @@ const App = () => {
             <Card.Text>{current.deaths}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small>Last updated {text}</small>
+          <small>Last updated {new Date(date).toDateString()}</small>
           </Card.Footer>
         </Card>
         <Card bg="success" text="white" className="text-center" style={{ margin: "5px" }}>
@@ -118,7 +118,7 @@ const App = () => {
             <Card.Text>{current.recovered}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small>Last updated {text}</small>
+          <small>Last updated {new Date(date).toDateString()}</small>
           </Card.Footer>
         </Card>
         <Card bg="primary" text="white" className="text-center" style={{ margin: "5px" }}>
@@ -129,7 +129,7 @@ const App = () => {
             <Card.Text>{current.active}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small>Last updated {text}</small>
+          <small>Last updated {new Date(date).toDateString()}</small>
           </Card.Footer>
         </Card>
       </CardGroup>
