@@ -6,11 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { File } from './Doc/File'
 
 
-const App = () => {
+
+const App = (props) => {
   const [current, setCurrent] = useState([])
   const [results, setResults] = useState([current])
   const [date, setDate] = useState([])
-  const [searchLocation, setSearchLocation] = useState([results])
+  const [searchLocation, setSearchLocation] = useState([])
+  const [locationsFiltered, setLocationsFiltered] = useState({})
 
 
 
@@ -53,6 +55,16 @@ const App = () => {
     }
   })
   console.log('Search', searchLocation)
+
+  const getSearchResult = (filteredLocations) => {
+    console.log('filtered', filteredLocations)
+    if (filteredLocations === false) {
+      console.log('No results found')
+      setLocationsFiltered({ filtered: 'No result'})
+    } else {
+      setLocationsFiltered(filteredLocations)
+    }
+  }
 
 
   const locations = filterLocation.map((data, id) => {
@@ -139,6 +151,7 @@ const App = () => {
             type="text" 
             placeholder="Search a country"
             onChange={e => setSearchLocation(e.target.value)} 
+            {...locationsFiltered}
           />
         </Form.Group>
       </Form>
