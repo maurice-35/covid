@@ -7,12 +7,12 @@ import { File } from './Doc/File'
 
 
 
-const App = (props) => {
+const App = () => {
   const [current, setCurrent] = useState([])
   const [results, setResults] = useState([current])
   const [date, setDate] = useState([])
   const [searchLocation, setSearchLocation] = useState([])
-  const [locationsFiltered, setLocationsFiltered] = useState({})
+  // const [locationsFiltered, setLocationsFiltered] = useState({})
 
 
 
@@ -56,15 +56,24 @@ const App = (props) => {
   })
   console.log('Search', searchLocation)
 
-  const getSearchResult = (filteredLocations) => {
-    console.log('filtered', filteredLocations)
-    if (filteredLocations === false) {
-      console.log('No results found')
-      setLocationsFiltered({ filtered: 'No result'})
-    } else {
-      setLocationsFiltered(filteredLocations)
-    }
+  const filterFunction = (location) => {
+    return location.name.toupperCase().indexOf(searchLocation.search.toupperCase()) > -1
   }
+
+  // const filterLocation = ({ location }) => {
+  //   return location.toLowerCase().indexOf(locationsFiltered.toLowerCase()) !== -1
+  // }
+
+
+  // const getSearchResult = (filteredLocations) => {
+  //   console.log('filtered', filteredLocations)
+  //   if (filteredLocations === false) {
+  //     console.log('No results found')
+  //     setLocationsFiltered({ filtered: 'No result'})
+  //   } else {
+  //     setLocationsFiltered(filteredLocations)
+  //   }
+  // }
 
 
   const locations = filterLocation.map((data, id) => {
@@ -151,7 +160,7 @@ const App = (props) => {
             type="text" 
             placeholder="Search a country"
             onChange={e => setSearchLocation(e.target.value)} 
-            {...locationsFiltered}
+            {...filterFunction}
           />
         </Form.Group>
       </Form>
