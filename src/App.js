@@ -56,25 +56,9 @@ const App = () => {
   })
   console.log('Search', searchLocation)
 
-  const filterFunction = (location) => {
-    return location.name.toupperCase().indexOf(searchLocation.search.toupperCase()) > -1
+  onchange = (event) => {
+    setSearchLocation({ search: event.target.value })
   }
-
-  // const filterLocation = ({ location }) => {
-  //   return location.toLowerCase().indexOf(locationsFiltered.toLowerCase()) !== -1
-  // }
-
-
-  // const getSearchResult = (filteredLocations) => {
-  //   console.log('filtered', filteredLocations)
-  //   if (filteredLocations === false) {
-  //     console.log('No results found')
-  //     setLocationsFiltered({ filtered: 'No result'})
-  //   } else {
-  //     setLocationsFiltered(filteredLocations)
-  //   }
-  // }
-
 
   const locations = filterLocation.map((data, id) => {
 
@@ -157,10 +141,11 @@ const App = () => {
       <Form>
         <Form.Group controlId="formGroupSearch">
           <Form.Control
+            className="search"
             type="text" 
             placeholder="Search a country"
             onChange={e => setSearchLocation(e.target.value)} 
-            {...filterFunction}
+            // {...filterFunction}
           />
         </Form.Group>
       </Form>
