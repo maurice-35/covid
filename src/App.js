@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Card, CardGroup, Form } from 'react-bootstrap'
@@ -12,7 +13,7 @@ const App = () => {
   const [results, setResults] = useState([current])
   const [date, setDate] = useState([])
   const [searchLocation, setSearchLocation] = useState([])
-  // const [locationsFiltered, setLocationsFiltered] = useState({})
+  const [locationsInput, setLocationsInput] = useState('')
 
 
 
@@ -24,6 +25,7 @@ const App = () => {
       ])
       .then(res => {
         //  setting total results
+        // const locationList = res.data.results || []
         setCurrent(res[0].data.data);
         // setting results for all countries
         setResults(res[1].data.data, File);
@@ -32,6 +34,7 @@ const App = () => {
         let date = res[0].data.dt
         console.log(date);
         setDate(res[0].data.dt);
+        // setSearchLocation({ locationList: locationList })
       })
       .catch(err => {
         console.log(err);
@@ -56,9 +59,35 @@ const App = () => {
   })
   console.log('Search', searchLocation)
 
+  const List = (props) => {
+    const filteredLocation = current.filter((el) => {
+      if (props.input === '') {
+        return el
+      } else {
+        return el.text.toLowerCase().includes(props.input)
+      }
+    })
+  }
+
+  let inputHandler = (e) => {
+    let lowerCase = e.target.value.toLowerCase()
+    setLocationsInput(lowerCase)
+  }
+
   onchange = (event) => {
     setSearchLocation({ search: event.target.value })
   }
+  
+
+  // const filterFunction = (location) => {
+  //   return location.name.toupperCase().indexOf(searchLocation.search.toupperCase()) > -1
+  // }
+
+  // const filterLocation = ({ location }) => {
+  //   return location.toLowerCase().indexOf(locationsFiltered.toLowerCase()) !== -1
+  // }
+
+
 
   const locations = filterLocation.map((data, id) => {
 
@@ -140,13 +169,19 @@ const App = () => {
       </CardGroup>
       <Form>
         <Form.Group controlId="formGroupSearch">
+        <ul>
+        {filterLocation.map((item) => (
+          <li key={item.id}>{item.text}</li>
+        ))}
+      </ul>
           <Form.Control
             className="search"
             type="text" 
             placeholder="Search a country"
-            onChange={e => setSearchLocation(e.target.value)} 
+            onChange={inputHandler} 
             // {...filterFunction}
           />
+          <p input={locationsInput} />
         </Form.Group>
       </Form>
       <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: 10 }}>{locations}</CardGroup>
