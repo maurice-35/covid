@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Card, CardGroup, Form } from 'react-bootstrap'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { File } from './Doc/File'
+import  Search  from './Search'
 
 
 
@@ -13,7 +13,7 @@ const App = () => {
   const [results, setResults] = useState([current])
   const [date, setDate] = useState([])
   const [searchLocation, setSearchLocation] = useState([])
-  const [locationsInput, setLocationsInput] = useState('')
+  // const [locationsInput, setLocationsInput] = useState('')
 
 
 
@@ -51,42 +51,33 @@ const App = () => {
 
 
   const filterLocation = results.filter(item => {
-    if(item === [results.location && results.flagUrl]) {
-    return item.location === searchLocation
+    if(item === [results.location && results.File[count].flagUrl]) {
+    return item.location && item.File[count].flagUrl === searchLocation
     } else {
       return 'No data'
     }
   })
   console.log('Search', searchLocation)
 
-  const List = (props) => {
-    const filteredLocation = current.filter((el) => {
-      if (props.input === '') {
-        return el
-      } else {
-        return el.text.toLowerCase().includes(props.input)
-      }
-    })
-  }
+  // const List = (props) => {
+  //   const filteredLocation = current.filter((el) => {
+  //     if (props.input === '') {
+  //       return el
+  //     } else {
+  //       return el.text.toLowerCase().includes(props.input)
+  //     }
+  //   })
+  // }
 
-  let inputHandler = (e) => {
-    let lowerCase = e.target.value.toLowerCase()
-    setLocationsInput(lowerCase)
-  }
+  // let inputHandler = (e) => {
+  //   let lowerCase = e.target.value.toLowerCase()
+  //   setLocationsInput(lowerCase)
+  // }
 
   onchange = (event) => {
     setSearchLocation({ search: event.target.value })
   }
   
-
-  // const filterFunction = (location) => {
-  //   return location.name.toupperCase().indexOf(searchLocation.search.toupperCase()) > -1
-  // }
-
-  // const filterLocation = ({ location }) => {
-  //   return location.toLowerCase().indexOf(locationsFiltered.toLowerCase()) !== -1
-  // }
-
 
 
   const locations = filterLocation.map((data, id) => {
@@ -169,19 +160,20 @@ const App = () => {
       </CardGroup>
       <Form>
         <Form.Group controlId="formGroupSearch">
-        <ul>
-        {filterLocation.map((item) => (
+        {/* <ul>
+        {filteredLocation.map((item) => (
           <li key={item.id}>{item.text}</li>
         ))}
-      </ul>
+      </ul> */}
           <Form.Control
             className="search"
             type="text" 
             placeholder="Search a country"
-            onChange={inputHandler} 
+            onChange={e => setSearchLocation(e.target.value)} 
             // {...filterFunction}
+            // input={Search}
           />
-          <p input={locationsInput} />
+          {/* <Search input={setSearchLocation} /> */}
         </Form.Group>
       </Form>
       <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: 10 }}>{locations}</CardGroup>
