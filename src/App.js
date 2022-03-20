@@ -23,7 +23,6 @@ const App = (props) => {
       ])
       .then(res => {
         //  setting total results
-        // const locationList = res.data.results || []
         setCurrent(res[0].data.data);
         // setting results for all countries
         setResults(res[1].data.data, File);
@@ -33,7 +32,6 @@ const App = (props) => {
         console.log(date);
         setDate(res[0].data.dt);
         setFilteredData(res[1].data.data)
-        // setSearchLocation({ locationList: locationList })
       })
       .catch(err => {
         console.log(err);
@@ -48,11 +46,8 @@ const App = (props) => {
   if (!File) return 'no data';
   if (!Array.isArray(File)) return 'results are not array'
 
-
-  
-  
-
   const handleSearch = (event) => {
+    event.preventDefault()
     let value = event.target.value.toLowerCase()
     let result = []
     console.log(value)
@@ -62,7 +57,7 @@ const App = (props) => {
     setFilteredData(result)
   }
 
-  const locations = results.map((data, id) => {
+  const locations = filteredData.map((data, id) => {
 
 
     return (
@@ -147,15 +142,6 @@ const App = (props) => {
             type="text" 
             placeholder="Search a country"
             onChange={(event) => handleSearch(event)} />
-            {filteredData.map((value,index) => {
-            return (
-              <div key={value.id}>
-                <div>
-              {value.location}
-              </div>
-              </div>
-            )
-            })}
         </Form.Group>
       </Form>
       <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: 10 }}>{locations}</CardGroup>
