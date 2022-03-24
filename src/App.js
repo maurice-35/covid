@@ -4,6 +4,8 @@ import { Card, CardGroup, Form } from 'react-bootstrap'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { File } from './Doc/File'
+// import List from './components/List'
+// import  Search  from './Search'
 
 
 
@@ -11,6 +13,8 @@ const App = (props) => {
   const [current, setCurrent] = useState([])
   const [results, setResults] = useState([current])
   const [date, setDate] = useState([])
+  // const [searchLocation, setSearchLocation] = useState([])
+  // const [locationsInput, setLocationsInput] = useState('')
   const [filteredData, setFilteredData] = useState(results)
 
 
@@ -23,6 +27,7 @@ const App = (props) => {
       ])
       .then(res => {
         //  setting total results
+        // const locationList = res.data.results || []
         setCurrent(res[0].data.data);
         // setting results for all countries
         setResults(res[1].data.data, File);
@@ -32,6 +37,7 @@ const App = (props) => {
         console.log(date);
         setDate(res[0].data.dt);
         setFilteredData(res[1].data.data)
+        // setSearchLocation({ locationList: locationList })
       })
       .catch(err => {
         console.log(err);
@@ -46,16 +52,83 @@ const App = (props) => {
   if (!File) return 'no data';
   if (!Array.isArray(File)) return 'results are not array'
 
+
+  // const filterLocation = results.filter(item => {
+  //   if(item === [results.location && results.File[count].flagUrl]) {
+  //   return item.location && item.File[count].flagUrl === searchLocation
+  //   } else {
+  //     return 'No data'
+  //   }
+  // })
+  // console.log('Search', searchLocation)
+
+  // const List = (props) => {
+  //   const filteredLocation = current.filter((el) => {
+  //     if (props.input === '') {
+  //       return el
+  //     } else {
+  //       return el.text.toLowerCase().includes(props.input)
+  //     }
+  //   })
+  // }
+
+  // let inputHandler = (e) => {
+  //   let lowerCase = e.target.value.toLowerCase()
+  //   setLocationsInput(lowerCase)
+  // }
+
+  // onchange = (event) => {
+  //   // setSearchLocation({ search: event.target.value })
+  //   console.log('Event', event)
+  // }
+  
+//   // create a new array by filtering the original array
+//   const filteredCountry = searchLocation.filter((el) => {
+//     //if no input the return the original
+//     if (props.input === '') {
+//         return el;
+//     }
+//     //return the item which contains the user input
+//     else {
+//         return el.text.toLowerCase().includes(props.input)
+//     }
+// })
+  // const removeItem = (id) => {
+  //   const newItem = filteredData.filter((el) => el.id !== id)
+  //   setFilteredData(newItem, id)
+  // }
+
   const handleSearch = (event) => {
-    event.preventDefault()
+    // event.preventDefault()
+    // console.log(event.target.location.value)
+    // props.onSearch('hi')
     let value = event.target.value.toLowerCase()
     let result = []
     console.log(value)
     result = results.filter((data) => {
-      return data.location.search(value) !== -1
+      console.log(data.location.search(value) !== -1)
+      if (data === locations) {
+        // onChange(event.target.value, event)
+        return {onChange: event.target.value}
+      }
     })
     setFilteredData(result)
   }
+
+    
+     // const filter = (e) => {
+    //   const keyword = e.target.value
+
+    //   if (keyword !== '') {
+    //     const result = results.filter((el) => {
+    //       return el.name.toLowerCase().startWith(keyword.toLowerCase())
+    //     })
+    //     setFilteredData(result)
+    // } else {
+    //   setFilteredData(results)
+    // }
+    // setName(keyword)
+    // }
 
   const locations = filteredData.map((data, id) => {
 
@@ -137,11 +210,36 @@ const App = (props) => {
       </CardGroup>
       <Form>
         <Form.Group controlId="formGroupSearch">
+        {/* <ul>
+        {filteredLocation.map((item) => (
+          <li key={item.id}>{item.text}</li>
+        ))}
+      </ul> */}
           <Form.Control
             className="search"
             type="text" 
             placeholder="Search a country"
             onChange={(event) => handleSearch(event)} />
+            {filteredData.map((value,index) => {
+            return (
+              <div key={value.id}>
+                <div>
+              {value.location}
+              </div>
+              </div>
+            )
+            })}
+            {/* // onChange={e => setSearchLocation(e.target.value)} 
+            // {...filteredCountry}
+            // input={Search} */}
+            {/* > */}
+          {/* <ul>
+            {filteredCountry.map((item) => (
+                <li key={item.id}>{item.value}</li>
+            ))}
+        </ul>  */}
+          {/* <List input={locationsInput} /> */}
+          {/* <Search input={setSearchLocation} /> */}
         </Form.Group>
       </Form>
       <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: 10 }}>{locations}</CardGroup>
