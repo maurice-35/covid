@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Card, CardGroup, Form } from 'react-bootstrap'
+import { Card, CardGroup } from 'react-bootstrap'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { File } from './Doc/File'
+import Search from './Search'
 
 
 
-const App = (props) => {
+const App = () => {
   const [current, setCurrent] = useState([])
   const [results, setResults] = useState([current])
   const [date, setDate] = useState([])
-  const [filteredData, setFilteredData] = useState(results)
+  // const [dataFiltered, setDataFiltered] = useState(Search)
 
 
 
@@ -32,7 +33,7 @@ const App = (props) => {
         let date = res[0].data.dt
         console.log(date);
         setDate(res[0].data.dt);
-        setFilteredData(res[1].data.data)
+        // setDataFiltered(res[1].data.data)
         // setSearchLocation({ locationList: locationList })
       })
       .catch(err => {
@@ -43,29 +44,7 @@ const App = (props) => {
   console.log('File', File)
   let count = 0
 
-  if (!results) return 'no data';
-  if (!Array.isArray(results)) return 'results are not array'
-  if (!File) return 'no data';
-  if (!Array.isArray(File)) return 'results are not array'
-
-
-  const handleSearch = (event) => {
-    let value = event.target.value.toLowerCase()
-    let result = []
-    console.log(value)
-    result = results.filter((data) => {
-      console.log(data.location.search(value) !== -1)
-      if (data === locations) {
-        // onChange(event.target.value, event)
-        return {onChange: event.target.value}
-      }
-    })
-    setFilteredData(result)
-  }
-
-    
-
-  const locations = filteredData.map((data, id) => {
+  const locations = results.map((data, id) => {
 
 
     return (
@@ -143,24 +122,7 @@ const App = (props) => {
           </Card.Footer>
         </Card>
       </CardGroup>
-      <Form>
-        <Form.Group controlId="formGroupSearch">
-          <Form.Control
-            className="search"
-            type="text" 
-            placeholder="Search a country"
-            onChange={(event) => handleSearch(event)} />
-            {filteredData.map((value,index) => {
-            return (
-              <div key={value.id}>
-                <div>
-              {value.location}
-              </div>
-              </div>
-            )
-            })}
-        </Form.Group>
-      </Form>
+        <Search placeholder="Search" data={results} />
       <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: 10 }}>{locations}</CardGroup>
     </div>
   )
