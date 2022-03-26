@@ -12,7 +12,6 @@ const App = () => {
   const [current, setCurrent] = useState([])
   const [results, setResults] = useState([current])
   const [date, setDate] = useState([])
-  // const [dataFiltered, setDataFiltered] = useState(Search)
 
 
 
@@ -43,6 +42,7 @@ const App = () => {
 
   console.log('File', File)
   let count = 0
+
 
   const locations = results.map((data, id) => {
 

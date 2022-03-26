@@ -7,10 +7,11 @@ const Search = ({placeholder, data}) => {
 	const [filteredData, setFilteredData] = useState([])
 	const [locationEntered, setLocationEntered] = useState("")
 
+
 	const handleFilter = (e) => {
 		const searchLocation = e.target.value
 		setLocationEntered(searchLocation)
-		const newFilter= data.filter((val) => {
+		const newFilter = data.filter((val) => {
 			return val.location.toLowerCase().includes(searchLocation.toLowerCase())
 		})
 
@@ -22,7 +23,12 @@ const Search = ({placeholder, data}) => {
 		console.log(searchLocation)
 	}
 
+	const clearInput = () => {
+		setFilteredData([])
+		setLocationEntered("")
+	}
 
+	
 	return (
 		<div className="search">
 			<div className="searchInput">
@@ -36,20 +42,22 @@ const Search = ({placeholder, data}) => {
 				{filteredData.length === 0 ? (
 					<SearchIcon />
 				) : (
-					<CloseIcon id="clearBtn" />
+					<CloseIcon id="clearBtn" onClick={clearInput} />
 				)}
 			</div>
 			</div>
-			{filteredData.length !== 0 && (
+			{data.length !== 0 && (
 				<div className="result">
 					{filteredData.map((value, key) => {
 						return (
-							<p onClick={handleFilter}>{value.location}</p>
+							<p key={value.id} onClick={handleFilter}>{value.location}</p>
+								
 						)
 					})}
 				</div>
 			)}
 		</div>
+		
 	)
 }
 
