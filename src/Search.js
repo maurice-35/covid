@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
 import CloseIcon from '@material-ui/icons/Close'
+import { Card } from 'react-bootstrap'
+import { File } from './Doc/File'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
-const Search = ({placeholder, data}) => {
+const Search = ({ placeholder, data }) => {
 	const [filteredData, setFilteredData] = useState([])
 	const [locationEntered, setLocationEntered] = useState("")
 
-
+	let count = 0
 	const handleFilter = (e) => {
 		const searchLocation = e.target.value
 		setLocationEntered(searchLocation)
@@ -23,41 +26,68 @@ const Search = ({placeholder, data}) => {
 		console.log(searchLocation)
 	}
 
+	// const show = (e) => {
+	// 	e.preventDefault()
+	// 	if (searchLocation == true) {
+
+	// 	}
+	// }
+
 	const clearInput = () => {
 		setFilteredData([])
 		setLocationEntered("")
 	}
 
-	
+
 	return (
 		<div className="search">
 			<div className="searchInput">
-			<input 
-			type="text"
-			placeholder={placeholder}
-			value={locationEntered}
-			onChange={handleFilter}
-			/>
-			<div className="searchIcon">
-				{filteredData.length === 0 ? (
-					<SearchIcon />
-				) : (
-					<CloseIcon id="clearBtn" onClick={clearInput} />
-				)}
-			</div>
+				<input
+					type="text"
+					placeholder={placeholder}
+					value={locationEntered}
+					onChange={handleFilter}
+				/>
+				<div className="searchIcon">
+					{filteredData.length === 0 ? (
+						<SearchIcon />
+					) : (
+						<CloseIcon id="clearBtn" onClick={clearInput} />
+					)}
+				</div>
 			</div>
 			{data.length !== 0 && (
 				<div className="result">
 					{filteredData.map((value, key) => {
 						return (
-							<p key={value.id} onClick={handleFilter}>{value.location}</p>
-								
+							<Card 
+							// key={data.id}
+							bg="secondary"
+							text="white"
+							className="text-center"
+							style={{ width: "60vw" }}
+							key={value.id} onClick={handleFilter}>{value.location}
+								{'>'}
+								{File[count].country}
+								<img src={File[count].flagUrl} alt="flag" />
+								{count = count += 1}
+								<Card.Body
+									key={data.id}
+								>
+									<Card.Title> {value.location}</Card.Title>
+									<Card.Text>Cases {value.cases}</Card.Text>
+									<Card.Text>Confirmed {value.confirmed}</Card.Text>
+									<Card.Text>Deaths {value.deaths}</Card.Text>
+									<Card.Text>Recovered {value.recovered}</Card.Text>
+									<Card.Text>Active {value.active}</Card.Text>
+								</Card.Body>
+							</Card>
 						)
 					})}
 				</div>
 			)}
 		</div>
-		
+
 	)
 }
 
