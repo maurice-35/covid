@@ -10,6 +10,7 @@ const Search = ({ placeholder, data }) => {
 	const [filteredData, setFilteredData] = useState([])
 	const [locationEntered, setLocationEntered] = useState("")
 
+
 	let count = 0
 	const handleFilter = (e) => {
 		const searchLocation = e.target.value
@@ -25,13 +26,6 @@ const Search = ({ placeholder, data }) => {
 		}
 		console.log(searchLocation)
 	}
-
-	// const show = (e) => {
-	// 	e.preventDefault()
-	// 	if (searchLocation == true) {
-
-	// 	}
-	// }
 
 	const clearInput = () => {
 		setFilteredData([])
@@ -58,21 +52,20 @@ const Search = ({ placeholder, data }) => {
 			</div>
 			{data.length !== 0 && (
 				<div className="result">
-					{filteredData.map((value, key) => {
+					{filteredData.map((value, id) => {
 						return (
-							<Card 
-							// key={data.id}
-							bg="secondary"
-							text="white"
-							className="text-center"
-							style={{ width: "60vw" }}
-							key={value.id} onClick={handleFilter}>{value.location}
-								{'>'}
-								{File[count].country}
+							<Card
+								bg="secondary"
+								text="white"
+								className="text-center"
+								style={{ width: "60vw" }}
+								key={value.id}
+								onClick={handleFilter}>
+								{value.location}
 								<img src={File[count].flagUrl} alt="flag" />
 								{count = count += 1}
 								<Card.Body
-									key={data.id}
+									key={value.id}
 								>
 									<Card.Title> {value.location}</Card.Title>
 									<Card.Text>Cases {value.cases}</Card.Text>

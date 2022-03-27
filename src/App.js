@@ -23,7 +23,6 @@ const App = () => {
       ])
       .then(res => {
         //  setting total results
-        // const locationList = res.data.results || []
         setCurrent(res[0].data.data);
         // setting results for all countries
         setResults(res[1].data.data, File);
@@ -32,8 +31,6 @@ const App = () => {
         let date = res[0].data.dt
         console.log(date);
         setDate(res[0].data.dt);
-        // setDataFiltered(res[1].data.data)
-        // setSearchLocation({ locationList: locationList })
       })
       .catch(err => {
         console.log(err);
