@@ -52,11 +52,11 @@ const App = () => {
         className="text-center"
         style={{ margin: "5px" }}
       >
-        {File[count].country}
+        {/* {File[count].country} */}
         <img src={File[count].flagUrl} alt="flag" />
         {count = count += 1}
         <Card.Body
-        key={data.id}
+          key={data.id}
         >
           <Card.Title> {data.location}</Card.Title>
           <Card.Text>Cases {data.cases}</Card.Text>
@@ -93,7 +93,7 @@ const App = () => {
             <Card.Text>{current.deaths}</Card.Text>
           </Card.Body>
           <Card.Footer>
-          <small>Last updated {new Date(date).toDateString()}</small>
+            <small>Last updated {new Date(date).toDateString()}</small>
           </Card.Footer>
         </Card>
         <Card bg="success" text="white" className="text-center" style={{ margin: "5px" }}>
@@ -104,7 +104,7 @@ const App = () => {
             <Card.Text>{current.recovered}</Card.Text>
           </Card.Body>
           <Card.Footer>
-          <small>Last updated {new Date(date).toDateString()}</small>
+            <small>Last updated {new Date(date).toDateString()}</small>
           </Card.Footer>
         </Card>
         <Card bg="primary" text="white" className="text-center" style={{ margin: "5px" }}>
@@ -115,11 +115,11 @@ const App = () => {
             <Card.Text>{current.active}</Card.Text>
           </Card.Body>
           <Card.Footer>
-          <small>Last updated {new Date(date).toDateString()}</small>
+            <small>Last updated {new Date(date).toDateString()}</small>
           </Card.Footer>
         </Card>
       </CardGroup>
-        <Search placeholder="Search" data={results} />
+      <Search placeholder="Search" data={results} />
       <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: 10 }}>{locations}</CardGroup>
     </div>
   )

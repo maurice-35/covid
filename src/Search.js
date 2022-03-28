@@ -16,7 +16,7 @@ const Search = ({ placeholder, data }) => {
 		const searchLocation = e.target.value
 		setLocationEntered(searchLocation)
 		const newFilter = data.filter((val) => {
-			return val.location.toLowerCase().includes(searchLocation.toLowerCase())
+			return val.location.toLowerCase().include(searchLocation.toLowerCase())
 		})
 
 		if (searchLocation === "") {
@@ -26,11 +26,7 @@ const Search = ({ placeholder, data }) => {
 		}
 		console.log(searchLocation)
 	}
-
-	const clearInput = () => {
-		setFilteredData([])
-		setLocationEntered("")
-	}
+	
 
 
 	return (
@@ -46,7 +42,7 @@ const Search = ({ placeholder, data }) => {
 					{filteredData.length === 0 ? (
 						<SearchIcon />
 					) : (
-						<CloseIcon id="clearBtn" onClick={clearInput} />
+						<CloseIcon id="clearBtn" />
 					)}
 				</div>
 			</div>
