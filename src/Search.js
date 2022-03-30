@@ -12,14 +12,15 @@ const Search = ({ placeholder, data }) => {
 
 
 	let count = 0
+	
 	const handleFilter = (e) => {
 		const searchLocation = e.target.value
 		setLocationEntered(searchLocation)
 		const newFilter = data.filter((val) => {
-			return val.location.toLowerCase().include(searchLocation.toLowerCase())
+			return val.location.toLowerCase().includes(searchLocation.toLowerCase())
 		})
-
-		if (searchLocation === "") {
+	
+		if (searchLocation  === "") {
 			setFilteredData([])
 		} else {
 			setFilteredData(newFilter)
@@ -27,7 +28,6 @@ const Search = ({ placeholder, data }) => {
 		console.log(searchLocation)
 	}
 	
-
 
 	return (
 		<div className="search">
@@ -76,7 +76,6 @@ const Search = ({ placeholder, data }) => {
 				</div>
 			)}
 		</div>
-
 	)
 }
 
