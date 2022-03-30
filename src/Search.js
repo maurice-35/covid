@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
 import CloseIcon from '@material-ui/icons/Close'
@@ -80,3 +81,6 @@ const Search = ({ placeholder, data }) => {
 }
 
 export default Search
+=======
+
+>>>>>>> 241063133f106bb70ad05a53c05fc8fc32b1aa6e
