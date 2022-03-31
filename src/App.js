@@ -10,8 +10,12 @@ import Search from './Search'
 
 const App = () => {
   const [current, setCurrent] = useState([])
-  const [results, setResults] = useState([current])
+  const [results, setResults] = useState([])
   const [date, setDate] = useState([])
+  // const [filteredData, setFilteredData] = useState([])
+ 	// const [filteredFlag, setFilteredFlag] = useState([])
+  // const [locationEntered, setLocationEntered] = useState("")
+ 	// const [flag, setFlag] = useState("")
 
 
 
@@ -40,7 +44,6 @@ const App = () => {
   console.log('File', File)
   let count = 0
 
-
   const locations = results.map((data, id) => {
 
 
@@ -52,7 +55,7 @@ const App = () => {
         className="text-center"
         style={{ margin: "5px" }}
       >
-        {/* {File[count].country} */}
+        {File[count].location}
         <img src={File[count].flagUrl} alt="flag" />
         {count = count += 1}
         <Card.Body

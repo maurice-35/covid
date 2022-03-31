@@ -10,7 +10,6 @@ const Search = ({ placeholder, data }) => {
 	const [filteredData, setFilteredData] = useState([])
 	const [locationEntered, setLocationEntered] = useState("")
 
-
 	let count = 0
 	
 	const handleFilter = (e) => {
@@ -19,13 +18,15 @@ const Search = ({ placeholder, data }) => {
 		const newFilter = data.filter((val) => {
 			return val.location.toLowerCase().includes(searchLocation.toLowerCase())
 		})
-	
+
 		if (searchLocation  === "") {
 			setFilteredData([])
 		} else {
 			setFilteredData(newFilter)
 		}
 		console.log(searchLocation)
+		console.log(newFilter)
+		console.log(data)
 	}
 	
 
