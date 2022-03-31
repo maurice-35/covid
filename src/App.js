@@ -12,10 +12,6 @@ const App = () => {
   const [current, setCurrent] = useState([])
   const [results, setResults] = useState([])
   const [date, setDate] = useState([])
-  // const [filteredData, setFilteredData] = useState([])
- 	// const [filteredFlag, setFilteredFlag] = useState([])
-  // const [locationEntered, setLocationEntered] = useState("")
- 	// const [flag, setFlag] = useState("")
 
 
 
