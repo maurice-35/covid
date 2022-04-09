@@ -56,8 +56,7 @@ const Search = ({ placeholder, data, newResults }) => {
 								onClick={handleFilter}>
 								{value.location}
 								<img src={value.flagUrl} alt="flag" />
-								<Card.Body
-								>
+								<Card.Body>
 									<Card.Title> {value.location}</Card.Title>
 									<Card.Text>Cases {value.cases}</Card.Text>
 									<Card.Text>Confirmed {value.confirmed}</Card.Text>
