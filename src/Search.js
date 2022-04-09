@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
 import CloseIcon from '@material-ui/icons/Close'
 import { Card } from 'react-bootstrap'
-import { File } from './Doc/File'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
@@ -52,17 +51,16 @@ const Search = ({ placeholder, data }) => {
 					{filteredData.map((value, id) => {
 						return (
 							<Card
+								key={value.id}
 								bg="secondary"
 								text="white"
 								className="text-center"
 								style={{ width: "60vw" }}
-								key={value.id}
 								onClick={handleFilter}>
 								{value.location}
-								<img src={File[count].flagUrl} alt="flag" />
+								<img src={value.flagUrl} alt="flag" />
 								{count = count += 1}
 								<Card.Body
-									key={value.id}
 								>
 									<Card.Title> {value.location}</Card.Title>
 									<Card.Text>Cases {value.cases}</Card.Text>

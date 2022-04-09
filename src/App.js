@@ -37,11 +37,20 @@ const App = () => {
       })
   }, [])
 
+let flagCount = 0
+
+  results.map((coun) => {
+  const newResults = { ...results[flagCount], ...File[flagCount] }
+  results[flagCount] = newResults
+  flagCount += 1
+  })
+
+
   console.log('File', File)
   let count = 0
 
   const locations = results.map((data, id) => {
-
+  
 
     return (
       <Card
