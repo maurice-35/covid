@@ -2,15 +2,12 @@ import React, { useState } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
 import CloseIcon from '@material-ui/icons/Close'
 import { Card } from 'react-bootstrap'
-import { File } from './Doc/File'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 const Search = ({ placeholder, data, newResults }) => {
 	const [filteredData, setFilteredData] = useState([])
 	const [locationEntered, setLocationEntered] = useState("")
-
-	// let count = 0
 	
 	const handleFilter = (e) => {
 		const searchLocation = e.target.value
@@ -29,7 +26,6 @@ const Search = ({ placeholder, data, newResults }) => {
 		console.log(data)
 	}
 	
-
 	return (
 		<div className="search">
 			<div className="searchInput">
@@ -60,7 +56,6 @@ const Search = ({ placeholder, data, newResults }) => {
 								onClick={handleFilter}>
 								{value.location}
 								<img src={value.flagUrl} alt="flag" />
-								{/* {count = count += 1} */}
 								<Card.Body
 								>
 									<Card.Title> {value.location}</Card.Title>
