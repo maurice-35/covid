@@ -7,13 +7,10 @@ div.card-group {
 }
 
 input {
-	/* display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center; */
 	width: 90vw;
 }
 
 .result {
 	width: 100px;
+	margin-left: 20%;
 }

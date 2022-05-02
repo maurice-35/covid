@@ -7,21 +7,21 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Search = ({ placeholder, data, newResults }) => {
 	const [filteredData, setFilteredData] = useState([])
-	const [locationEntered, setLocationEntered] = useState("")
+	const [countryEntered, setCountryEntered] = useState("")
 	
 	const handleFilter = (e) => {
-		const searchLocation = e.target.value
-		setLocationEntered(searchLocation)
+		const searchCountry = e.target.value
+		setCountryEntered(searchCountry)
 		const newFilter = data.filter((val) => {
-			return val.location.toLowerCase().includes(searchLocation.toLowerCase())
+			return val.country.toLowerCase().includes(searchCountry.toLowerCase())
 		})
 
-		if (searchLocation  === "") {
+		if (searchCountry  === "") {
 			setFilteredData([])
 		} else {
 			setFilteredData(newFilter)
 		}
-		console.log(searchLocation)
+		console.log(searchCountry)
 		console.log(newFilter)
 		console.log(data)
 	}
@@ -32,7 +32,7 @@ const Search = ({ placeholder, data, newResults }) => {
 				<input
 					type="text"
 					placeholder={placeholder}
-					value={locationEntered}
+					value={countryEntered}
 					onChange={handleFilter}
 				/>
 				<div className="searchIcon">
@@ -48,7 +48,7 @@ const Search = ({ placeholder, data, newResults }) => {
 					{filteredData.map((value, id) => {
 						return (
 							<Card
-								key={value.id}
+								key={id}
 								bg="secondary"
 								text="white"
 								className="text-center"
@@ -57,12 +57,12 @@ const Search = ({ placeholder, data, newResults }) => {
 								{value.location}
 								<img src={value.flagUrl} alt="flag" />
 								<Card.Body>
-									<Card.Title> {value.location}</Card.Title>
-									<Card.Text>Cases {value.cases}</Card.Text>
-									<Card.Text>Confirmed {value.confirmed}</Card.Text>
-									<Card.Text>Deaths {value.deaths}</Card.Text>
+									<Card.Title> {value.country}</Card.Title>
+									<Card.Text>Cases</Card.Text>
+									<Card.Text>Infected {value.infected}</Card.Text>
+									<Card.Text>Deceased {value.deceased}</Card.Text>
 									<Card.Text>Recovered {value.recovered}</Card.Text>
-									<Card.Text>Active {value.active}</Card.Text>
+									<Card.Text>Tested {value.tested}</Card.Text>
 								</Card.Body>
 							</Card>
 						)

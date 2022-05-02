@@ -9,36 +9,22 @@ import Search from './Search'
 
 
 const App = () => {
-  const [current, setCurrent] = useState([])
   const [results, setResults] = useState([])
-  const [date, setDate] = useState([])
 
-
-
-  useEffect(() => {
-    axios
-      .all([
-        axios.get("https://covid2019-api.herokuapp.com/v2/total"),
-        axios.get("https://covid2019-api.herokuapp.com/v2/current"),
-      ])
-      .then(res => {
-        //  setting total results
-        setCurrent(res[0].data.data);
-        // setting results for all countries
-        setResults(res[1].data.data, File);
-        console.log(res[0].data.data);
-        console.log(res[1].data.data);
-        let date = res[0].data.dt
-        console.log(date);
-        setDate(res[0].data.dt);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }, [])
+useEffect(() => {
+  const getData = async () => {
+    try {
+      const { data } = await axios.get('https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true')
+      console.log('Data', data)
+      setResults(data)
+    } catch (err) {
+    }
+  }
+  getData()
+}, [])
 
 let flagCount = 0
-
+// eslint-disable-next-line
   results.map((coun) => {
   const newResults = { ...results[flagCount], ...File[flagCount] }
   results[flagCount] = newResults
@@ -49,29 +35,29 @@ let flagCount = 0
   console.log('File', File)
   let count = 0
 
-  const locations = results.map((data, id) => {
+  const countries = results.map((data, id) => {
   
 
     return (
       <Card
-        key={data.id}
+        key={id}
         bg="secondary"
         text="white"
         className="text-center"
         style={{ margin: "5px" }}
       >
-        {File[count].location}
+        {File[count].country}
         <img src={File[count].flagUrl} alt="flag" />
         {count = count += 1}
         <Card.Body
-          key={data.id}
         >
-          <Card.Title> {data.location}</Card.Title>
-          <Card.Text>Cases {data.cases}</Card.Text>
-          <Card.Text>Confirmed {data.confirmed}</Card.Text>
-          <Card.Text>Deaths {data.deaths}</Card.Text>
+          <Card.Title> {data.country}</Card.Title>
+          <Card.Text>Cases</Card.Text>
+          <Card.Text>Infected {data.infected}</Card.Text>
+          <Card.Text>Deceased {data.deceased}</Card.Text>
           <Card.Text>Recovered {data.recovered}</Card.Text>
-          <Card.Text>Active {data.active}</Card.Text>
+          <Card.Text>Tested {data.tested}</Card.Text>
+          <Card.Text><small>Last updated {new Date().toString()}</small></Card.Text>
         </Card.Body>
       </Card>
     )
@@ -84,24 +70,24 @@ let flagCount = 0
         <Card bg="secondary" text="white" className="text-center" style={{ margin: "5px" }}>
           <Card.Body>
             <Card.Title>
-              <small>{current.location}</small>
+              <small>{results.location}</small>
             </Card.Title>
-            <Card.Title>Confirmed</Card.Title>
-            <Card.Text>{current.confirmed}</Card.Text>
+            <Card.Title>Infected</Card.Title>
+            <Card.Text>{results.infected}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small>Last updated {new Date(date).toDateString()}</small>
+            <small>Last updated {new Date().toString()}</small>
           </Card.Footer>
         </Card>
         <Card bg="danger" text="white" className="text-center" style={{ margin: "5px" }}>
           <Card.Body>
             <Card.Title>
             </Card.Title>
-            <Card.Title>Deaths</Card.Title>
-            <Card.Text>{current.deaths}</Card.Text>
+            <Card.Title>Deceased</Card.Title>
+            <Card.Text>{results.deceased}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small>Last updated {new Date(date).toDateString()}</small>
+            <small>Last updated {new Date().toString()}</small>
           </Card.Footer>
         </Card>
         <Card bg="success" text="white" className="text-center" style={{ margin: "5px" }}>
@@ -109,26 +95,26 @@ let flagCount = 0
             <Card.Title>
             </Card.Title>
             <Card.Title>Recovered</Card.Title>
-            <Card.Text>{current.recovered}</Card.Text>
+            <Card.Text>{results.recovered}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small>Last updated {new Date(date).toDateString()}</small>
+            <small>Last updated {new Date().toString()}</small>
           </Card.Footer>
         </Card>
         <Card bg="primary" text="white" className="text-center" style={{ margin: "5px" }}>
           <Card.Body>
             <Card.Title>
             </Card.Title>
-            <Card.Title>Active</Card.Title>
-            <Card.Text>{current.active}</Card.Text>
+            <Card.Title>Tested</Card.Title>
+            <Card.Text>{results.tested}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small>Last updated {new Date(date).toDateString()}</small>
+            <small>Last updated {new Date().toString()}</small>
           </Card.Footer>
         </Card>
       </CardGroup>
       <Search placeholder="Search" data={results} />
-      <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: 10 }}>{locations}</CardGroup>
+      <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: 10 }}>{countries}</CardGroup>
     </div>
   )
 }
