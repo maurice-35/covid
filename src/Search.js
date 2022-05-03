@@ -5,7 +5,7 @@ import { Card } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
-const Search = ({ placeholder, data, newResults }) => {
+const Search = ({ placeholder, data }) => {
 	const [filteredData, setFilteredData] = useState([])
 	const [countryEntered, setCountryEntered] = useState("")
 	
@@ -23,7 +23,6 @@ const Search = ({ placeholder, data, newResults }) => {
 		}
 		console.log(searchCountry)
 		console.log(newFilter)
-		console.log(data)
 	}
 	
 	return (

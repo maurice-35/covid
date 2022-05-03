@@ -11,32 +11,29 @@ import Search from './Search'
 const App = () => {
   const [results, setResults] = useState([])
 
-useEffect(() => {
-  const getData = async () => {
-    try {
-      const { data } = await axios.get('https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true')
-      console.log('Data', data)
-      setResults(data)
-    } catch (err) {
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get('https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true')
+        setResults(data)
+      } catch (err) {
+      }
     }
-  }
-  getData()
-}, [])
+    getData()
+  }, [])
 
-let flagCount = 0
-// eslint-disable-next-line
+  let flagCount = 0
+  // eslint-disable-next-line
   results.map((coun) => {
-  const newResults = { ...results[flagCount], ...File[flagCount] }
-  results[flagCount] = newResults
-  flagCount += 1
+    const newResults = { ...results[flagCount], ...File[flagCount] }
+    results[flagCount] = newResults
+    flagCount += 1
   })
 
-
-  console.log('File', File)
   let count = 0
 
   const countries = results.map((data, id) => {
-  
+
 
     return (
       <Card
