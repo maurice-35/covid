@@ -9,31 +9,37 @@ import Search from './Search'
 
 
 const App = () => {
+  const [current, setCurrent] = useState([])
   const [results, setResults] = useState([])
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data } = await axios.get('https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true')
-        setResults(data)
-      } catch (err) {
-      }
-    }
-    getData()
+useEffect(() => {
+      axios.all([
+        axios.get('https://api.apify.com/v2/key-value-stores/SmuuI0oebnTWjRTUh/records/LATEST?disableRedirect=true'),
+        axios.get('https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true'),
+      ])
+      .then(res => {
+        //  setting world total results
+        setCurrent(res[0].data.regionData[0]);
+        // setting results for some countries
+        setResults(res[1].data, File);
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }, [])
 
-  let flagCount = 0
-  // eslint-disable-next-line
+let flagCount = 0
+// eslint-disable-next-line
   results.map((coun) => {
-    const newResults = { ...results[flagCount], ...File[flagCount] }
-    results[flagCount] = newResults
-    flagCount += 1
+  const newResults = { ...results[flagCount], ...File[flagCount] }
+  results[flagCount] = newResults
+  flagCount += 1
   })
 
   let count = 0
 
   const countries = results.map((data, id) => {
-
+  
 
     return (
       <Card
@@ -66,33 +72,11 @@ const App = () => {
       <CardGroup id="background">
         <Card bg="secondary" text="white" className="text-center" style={{ margin: "5px" }}>
           <Card.Body>
-            <Card.Title>
-              <small>{results.location}</small>
-            </Card.Title>
-            <Card.Title>Infected</Card.Title>
-            <Card.Text>{results.infected}</Card.Text>
-          </Card.Body>
-          <Card.Footer>
-            <small>Last updated {new Date().toString()}</small>
-          </Card.Footer>
-        </Card>
-        <Card bg="danger" text="white" className="text-center" style={{ margin: "5px" }}>
-          <Card.Body>
-            <Card.Title>
-            </Card.Title>
-            <Card.Title>Deceased</Card.Title>
-            <Card.Text>{results.deceased}</Card.Text>
-          </Card.Body>
-          <Card.Footer>
-            <small>Last updated {new Date().toString()}</small>
-          </Card.Footer>
-        </Card>
-        <Card bg="success" text="white" className="text-center" style={{ margin: "5px" }}>
-          <Card.Body>
-            <Card.Title>
-            </Card.Title>
-            <Card.Title>Recovered</Card.Title>
-            <Card.Text>{results.recovered}</Card.Text>
+            {/* <Card.Title>
+            <Card.Title>World data</Card.Title>
+            </Card.Title> */}
+            <Card.Title>World Active Cases</Card.Title>
+            <Card.Text>{current.activeCases}</Card.Text>
           </Card.Body>
           <Card.Footer>
             <small>Last updated {new Date().toString()}</small>
@@ -102,13 +86,36 @@ const App = () => {
           <Card.Body>
             <Card.Title>
             </Card.Title>
-            <Card.Title>Tested</Card.Title>
-            <Card.Text>{results.tested}</Card.Text>
+            <Card.Title>World Total Cases</Card.Title>
+            <Card.Text>{current.totalCases}</Card.Text>
           </Card.Body>
           <Card.Footer>
             <small>Last updated {new Date().toString()}</small>
           </Card.Footer>
         </Card>
+        <Card bg="success" text="white" className="text-center" style={{ margin: "5px" }}>
+          <Card.Body>
+            <Card.Title>
+            </Card.Title>
+            <Card.Title>World Total Recovered</Card.Title>
+            <Card.Text>{current.totalRecovered}</Card.Text>
+          </Card.Body>
+          <Card.Footer>
+            <small>Last updated {new Date().toString()}</small>
+          </Card.Footer>
+        </Card>
+        <Card bg="danger" text="white" className="text-center" style={{ margin: "5px" }}>
+          <Card.Body>
+            <Card.Title>
+            </Card.Title>
+            <Card.Title>World Total Deaths</Card.Title>
+            <Card.Text>{current.totalDeaths}</Card.Text>
+          </Card.Body>
+          <Card.Footer>
+            <small>Last updated {new Date().toString()}</small>
+          </Card.Footer>
+        </Card>
+        
       </CardGroup>
       <Search placeholder="Search" data={results} />
       <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: 10 }}>{countries}</CardGroup>
