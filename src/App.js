@@ -68,9 +68,12 @@ const App = () => {
 
   return (
     <div>
-      <div>
-        <Card.Title id="world">
-          <Card.Title>World Covid Data</Card.Title>
+      <div className="world">
+        <Card.Title>
+          <Card.Title></Card.Title>
+          <Card.Title><img src="https://phil.cdc.gov//PHIL_Images/23312/23312_lores.jpg" alt="img" /></Card.Title>
+          <Card.Title>World Covid-19 Data</Card.Title>
+          <Card.Title><img src="https://phil.cdc.gov//PHIL_Images/23312/23312_lores.jpg" alt="img" /></Card.Title>
         </Card.Title>
       </div>
       <CardGroup id="background">

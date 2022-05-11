@@ -6,9 +6,9 @@ div.card-group {
 	background-image: url('https://image.freepik.com/free-vector/stylish-hexagonal-line-pattern-background_1017-19742.jpg?w=900');
 }
 
-#cases {
-	display: grid;
-  grid-template-rows: auto 1fr auto;
+.world {
+	max-width: 100%;
+	border: 10px solid darkblue;
 }
 
 .card-title.h5 {
@@ -21,7 +21,11 @@ div.card-group {
 	text-transform: uppercase;
 	text-decoration: underline;
 	font-family: fantasy;
+}
 
+.card-title img {
+	max-width: 40%;
+	max-height: 40%;
 }
 
 input {
