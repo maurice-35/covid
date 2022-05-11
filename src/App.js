@@ -12,11 +12,11 @@ const App = () => {
   const [current, setCurrent] = useState([])
   const [results, setResults] = useState([])
 
-useEffect(() => {
-      axios.all([
-        axios.get('https://api.apify.com/v2/key-value-stores/SmuuI0oebnTWjRTUh/records/LATEST?disableRedirect=true'),
-        axios.get('https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true'),
-      ])
+  useEffect(() => {
+    axios.all([
+      axios.get('https://api.apify.com/v2/key-value-stores/SmuuI0oebnTWjRTUh/records/LATEST?disableRedirect=true'),
+      axios.get('https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true'),
+    ])
       .then(res => {
         //  setting world total results
         setCurrent(res[0].data.regionData[0]);
@@ -28,18 +28,18 @@ useEffect(() => {
       })
   }, [])
 
-let flagCount = 0
-// eslint-disable-next-line
+  let flagCount = 0
+  // eslint-disable-next-line
   results.map((coun) => {
-  const newResults = { ...results[flagCount], ...File[flagCount] }
-  results[flagCount] = newResults
-  flagCount += 1
+    const newResults = { ...results[flagCount], ...File[flagCount] }
+    results[flagCount] = newResults
+    flagCount += 1
   })
 
   let count = 0
 
   const countries = results.map((data, id) => {
-  
+
 
     return (
       <Card
@@ -52,8 +52,7 @@ let flagCount = 0
         {File[count].country}
         <img src={File[count].flagUrl} alt="flag" />
         {count = count += 1}
-        <Card.Body
-        >
+        <Card.Body>
           <Card.Title> {data.country}</Card.Title>
           <Card.Text>Cases</Card.Text>
           <Card.Text>Infected {data.infected}</Card.Text>
@@ -69,12 +68,14 @@ let flagCount = 0
 
   return (
     <div>
+      <div>
+        <Card.Title id="world">
+          <Card.Title>World Covid Data</Card.Title>
+        </Card.Title>
+      </div>
       <CardGroup id="background">
         <Card bg="secondary" text="white" className="text-center" style={{ margin: "5px" }}>
           <Card.Body>
-            {/* <Card.Title>
-            <Card.Title>World data</Card.Title>
-            </Card.Title> */}
             <Card.Title>World Active Cases</Card.Title>
             <Card.Text>{current.activeCases}</Card.Text>
           </Card.Body>
@@ -115,7 +116,7 @@ let flagCount = 0
             <small>Last updated {new Date().toString()}</small>
           </Card.Footer>
         </Card>
-        
+
       </CardGroup>
       <Search placeholder="Search" data={results} />
       <CardGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: 10 }}>{countries}</CardGroup>

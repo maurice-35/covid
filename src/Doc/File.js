@@ -3,182 +3,182 @@
 export const File = ([
 	{
 		country: 'Algeria',
-		flagUrl: 'https://img.geonames.org/flags/x/dz.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/ag-flag.gif',
 	},
 	{
 		country: 'Austria',
-		flagUrl: 'https://img.geonames.org/flags/x/at.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/au-flag.gif',
 	},
 	{
 		country: 'Azerbaijan',
-		flagUrl: 'https://img.geonames.org/flags/x/az.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/aj-flag.gif',
 	},
 	{
 		country: 'Bahrain',
-		flagUrl: 'https://img.geonames.org/flags/x/bh.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/ba-flag.gif',
 	},
 	{
 		country: 'Belgium',
-		flagUrl: 'https://img.geonames.org/flags/x/be.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/be-flag.gif',
 	},
 	{
 		country: 'Brazil',
-		flagUrl: 'https://img.geonames.org/flags/x/br.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/br-flag.gif',
 	},
 	{
 		country: 'Bulgaria',
-		flagUrl: 'https://img.geonames.org/flags/x/bg.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/bu-flag.gif',
 	},
 	{
 		country: 'Canada',
-		flagUrl: 'https://img.geonames.org/flags/x/ca.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/ca-flag.gif',
 	},
 	{
 		country: 'China',
-		flagUrl: 'https://img.geonames.org/flags/x/cn.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/ch-flag.gif',
 	},
 	{
 		country: 'Czechia',
-		flagUrl: 'https://img.geonames.org/flags/x/cz.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/ez-flag.gif',
 	},
 	{
 		country: 'Denmark',
-		flagUrl: 'https://img.geonames.org/flags/x/dk.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/da-flag.gif',
 	},
 	{
 		country: 'Finland',
-		flagUrl: 'https://img.geonames.org/flags/x/fi.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/fi-flag.gif',
 	},
 	{
 		country: 'France',
-		flagUrl: 'https://img.geonames.org/flags/x/fr.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/fr-flag.gif',
 	},
 	{
 		country: 'Germany',
-		flagUrl: 'https://img.geonames.org/flags/x/de.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/gm-flag.gif',
 	},
 	{
 		country: 'Honduras',
-		flagUrl: 'https://img.geonames.org/flags/x/hn.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/ho-flag.gif',
 	},
 	{
 		country: 'Hungary',
-		flagUrl: 'https://img.geonames.org/flags/x/hu.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/hu-flag.gif',
 	},
 	{
 		country: 'India',
-		flagUrl: 'https://img.geonames.org/flags/x/in.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/in-flag.gif',
 	},
 	{
 		country: 'Iran',
-		flagUrl: 'https://img.geonames.org/flags/x/ir.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/ir-flag.gif',
 	},
 	{
 		country: 'Italy',
-		flagUrl: 'https://img.geonames.org/flags/x/it.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/it-flag.gif',
 	},
 	{
 		country: 'Japan',
-		flagUrl: 'https://img.geonames.org/flags/x/jp.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/ja-flag.gif',
 	},
 	{
 		country: 'Luxembourg',
-		flagUrl: 'https://img.geonames.org/flags/x/lu.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/lu-flag.gif',
 	},
 	{
 		country: 'Malaysia',
-		flagUrl: 'https://img.geonames.org/flags/x/my.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/my-flag.gif',
 	},
 	{
 		country: 'Netherlands',
-		flagUrl: 'https://img.geonames.org/flags/x/nl.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/nl-flag.gif',
 	},
 	{
 		country: 'Nigeria',
-		flagUrl: 'https://img.geonames.org/flags/x/ng.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/ni-flag.gif',
 	},
 	{
 		country: 'Norway',
-		flagUrl: 'https://img.geonames.org/flags/x/no.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/no-flag.gif',
 	},
 	{
 		country: 'Pakistan',
-		flagUrl: 'https://img.geonames.org/flags/x/pk.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/pk-flag.gif',
 	},
 	{
 		country: 'Palestine',
-		flagUrl: 'https://img.geonames.org/flags/x/ps.gif',
+		flagUrl: 'https://countryflagsapi.com/png/palestine',
 	},
 	{
 		country: 'Philippines',
-		flagUrl: 'https://img.geonames.org/flags/x/ph.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/rp-flag.gif',
 	},
 	{
 		country: 'Poland',
-		flagUrl: 'https://img.geonames.org/flags/x/pl.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/pl-flag.gif',
 	},
 	{
 		country: 'Portugal',
-		flagUrl: 'https://img.geonames.org/flags/x/pt.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/po-flag.gif',
 	},
 	{
 		country: 'Romania',
-		flagUrl: 'https://img.geonames.org/flags/x/ro.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/ro-flag.gif',
 	},
 	{
 		country: 'Russia',
-		flagUrl: 'https://img.geonames.org/flags/x/ru.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/rs-flag.gif',
 	},
 	{
 		country: 'Saudi Arabia',
-		flagUrl: 'https://img.geonames.org/flags/x/sa.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/sa-flag.gif',
 	},
 	{
 		country: 'Serbia',
-		flagUrl: 'https://img.geonames.org/flags/x/rs.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/ri-flag.gif',
 	},
 	{
 		country: 'Singapore',
-		flagUrl: 'https://img.geonames.org/flags/x/sg.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/sn-flag.gif',
 	},
 	{
 		country: 'Slovakia',
-		flagUrl: 'https://img.geonames.org/flags/x/sk.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/lo-flag.gif',
 	},
 	{
 		country: 'Slovenia',
-		flagUrl: 'https://img.geonames.org/flags/x/si.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/si-flag.gif',
 	},
 	{
 		country: 'South Korea',
-		flagUrl: 'https://img.geonames.org/flags/x/kr.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/ks-flag.gif',
 	},
 	{
 		country: 'Spain',
-		flagUrl: 'https://img.geonames.org/flags/x/es.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/sp-flag.gif',
 	},
 	{
 		country: 'Sweden',
-		flagUrl: 'https://img.geonames.org/flags/x/se.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/sw-flag.gif',
 	},
 	{
 		country: 'Switzerland',
-		flagUrl: 'https://img.geonames.org/flags/x/ch.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/sz-flag.gif',
 	},
 	{
 		country: 'Turkey',
-		flagUrl: 'https://img.geonames.org/flags/x/tr.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/tu-flag.gif',
 	},
 	{
 		country: 'United Kingdom',
-		flagUrl: 'https://img.geonames.org/flags/x/gb.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/uk-flag.gif',
 	},
 	{
 		country: 'United States',
-		flagUrl: 'https://img.geonames.org/flags/x/us.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/us-flag.gif',
 	},
 	{
 		country: 'Vietnam',
-		flagUrl: 'https://img.geonames.org/flags/x/vn.gif',
+		flagUrl: 'https://www.worldometers.info/img/flags/vm-flag.gif',
 	},
 ])
