@@ -72,7 +72,6 @@ const App = () => {
     <div>
       <div className="world">
         <Card.Title>
-          <Card.Title></Card.Title>
           <Card.Title>
             <img
               src="https://phil.cdc.gov//PHIL_Images/23312/23312_lores.jpg"

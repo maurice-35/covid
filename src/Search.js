@@ -20,8 +20,10 @@ const Search = ({ placeholder, data }) => {
     } else {
       setFilteredData(newFilter);
     }
-    // console.log(searchCountry)
-    // console.log(newFilter)
+  };
+
+  const resetInputField = () => {
+    setCountryEntered("");
   };
 
   return (
@@ -29,6 +31,7 @@ const Search = ({ placeholder, data }) => {
       <div className="searchInput">
         <input
           type="text"
+          name="search"
           placeholder={placeholder}
           value={countryEntered}
           onChange={handleFilter}
@@ -37,7 +40,7 @@ const Search = ({ placeholder, data }) => {
           {filteredData.length === 0 ? (
             <SearchIcon />
           ) : (
-            <CloseIcon id="clearBtn" />
+            <CloseIcon onClick={resetInputField} />
           )}
         </div>
       </div>
