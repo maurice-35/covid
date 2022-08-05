@@ -61,7 +61,7 @@ const App = () => {
           <Card.Text>Recovered {data.recovered}</Card.Text>
           <Card.Text>Tested {data.tested}</Card.Text>
           <Card.Text>
-            <small>Last updated {new Date().toString()}</small>
+            <small>Last updated {data.lastUpdatedApify.toString()}</small>
           </Card.Text>
         </Card.Body>
       </Card>
@@ -149,12 +149,7 @@ const App = () => {
         </Card>
       </CardGroup>
       <Search placeholder="Search" data={results} />
-      <CardGroup
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gridGap: 10,
-        }}
+      <CardGroup id="countryInfo"
       >
         {countries}
       </CardGroup>
